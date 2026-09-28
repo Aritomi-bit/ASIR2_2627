@@ -1,7 +1,5 @@
-```yaml
-Modelos de Red a traves de maquinas virtuales
-```
 
+#Modelos de Red a traves de maquinas virtuales
 Introducción del Tema
   Tipo de modos de red a traves de VirtualBox.
 * NAT --> Permite acceder a Internet y a la red externa.
