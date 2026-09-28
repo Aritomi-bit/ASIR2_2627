@@ -29,3 +29,19 @@ Se revisa el servicio SSH,
 sudo systemctl enable --now ssh
 ```
 Se activa el servidor SSH para que se inicie autamaticamente en el arranque y se pone en marcha de forma inmediata.
+
+
+
+
+```yaml
+COMO ACTIVAR EL SERVICIO SSH EN LINUX
+```
+1. Actualizar el listado de paquetes del sistema:
+```
+sudo apt update
+```
+2. Instalar el servidor SSH
+```
+sudo apt install openssh-server
+```
+
