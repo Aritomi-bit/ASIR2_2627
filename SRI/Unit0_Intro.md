@@ -11,16 +11,26 @@ Introducción del Tema
 * Red en la nube (Experimental): Permite conectar una máquina virtual local directamente a una subred remota en la nube.
 * No conectado --> No tiene conexión a la red.
 
-
- ## Unidad 2
-ACTIVAR EL SERVICIO SSH EN LINUX
-
-1. Actualizar el listado de paquetes del sistema:
+## Conexión SSH mediante claves entre dos equipos virtuales con Ubuntu
+ # Paso 1: Configurar el Servidor Ubuntu
+ 1. Actualizar e instalar el servidor SSH:
 ```
 sudo apt update
+sudo apt install openssh-server -y
 ```
-2. Instalar el servidor SSH
+2. Vereficar que el servicio esté activo y ejecutándose:
 ```
-sudo apt install openssh-server
+sudo systemctl enable --now ssh
+sudo systemctl status shh
 ```
+3. Averiguar la dirección IP del servidor:
+```
+ip a
+```
+  # Paso 2: Generar y Configurar la Clave en el Cliente Ubuntu
+1. Generar el par de claves SSH
+```
+ssh-keygen -t ed25519 -c
+```
+
 
