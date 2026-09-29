@@ -1,6 +1,6 @@
 ## CONFIGURAR UN SERVIODR DHCP PARA QUE ASIGNE DIRECCIONES IP
 # Paso1: Configurar las Redes Virtuales
-1 En VirtualBox:
+1. En VirtualBox:
 * Ve a la configuración de la máquina virtual Servidor -> Red.
 * Conecta el Adaptador 1 a Red interna (Internal Network) y asígnale un nombre (por ejemplo, red-interna1).
 * Haz lo mismo con la máquina virtual Cliente: ve a su configuración de Red y conéctala a la misma Red interna (red-interna1).
