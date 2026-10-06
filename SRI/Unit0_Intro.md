@@ -23,10 +23,18 @@ sudo apt install openssh-server -y
 sudo systemctl enable --now ssh
 sudo systemctl status shh
 ```
-3. Averiguar la dirección IP del servidor:
+3. Permitir el puerto 22 en UFW
+```
+sudo ufw allow ssh
+sudo ufw reload
+```
+4. Averiguar la dirección IP del servidor:
 ```
 ip a
 ```
+
+5. Conectarse a la maquina virtual
+
   # Paso 2: Generar y Configurar la Clave en el Cliente Ubuntu
 1. Generar el par de claves SSH
 ```
