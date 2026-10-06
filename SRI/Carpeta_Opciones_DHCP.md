@@ -53,3 +53,23 @@ Establece el tiempo máximo permitido de concesión de una IP. El valor está en
 ```
 Explica que el parámetro ddns-update-style controla si el servidor DHCP intentará o no actualizar automáticamente los registros del servidor DNS cuando se confirme la entrega (concesión) de una IP a un equipo. Añade que por defecto se utiliza el comportamiento clásico de la versión 2 del paquete ('none'/ninguno), dado que la versión 2 de DHCP no tenía soporte para DNS Dinámico (DDNS).
 
+# Parámetro de Configuración Activo
+```
+ddns-update-style none;
+```
+Es la instrucción que el servidor ejecuta. Al estar configurada en none, le indica al servidor DHCP que no intente actualizar automáticamente los registros en un servidor DNS cuando asigne una dirección IP a un cliente. Es la opción recomendada si no tienes un servidor DNS dinámico configurado en tu red.
+
+# Comentarios
+```
+If this DHCP server is the official DHCP server for the local
+# network, the authoritative directive should be uncommented.
+```
+Inicia la explicación indicando que si este servidor DHCP es el servidor oficial (el servidor principal) para la red local debes descomentar (quitarle el #) a la directiva authoritative; que se encuentra abajo.
+
+```
+#authoritative;
+```
+Es la directiva en sí, pero actualmente está desactivada porque empieza con #
+
+¿Qué hace si la activas (quitando el #)? Le dice al servidor DHCP que él es la "máxima autoridad" en esa red. Si un equipo se conecta pidiendo una IP antigua que no pertenece a esta red, el servidor rechazará de inmediato esa solicitud (DHCPNAK) y le asignará una IP correcta enseguida, evitando esperas o errores de conectividad en los clientes.
+
