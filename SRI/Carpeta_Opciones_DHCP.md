@@ -42,3 +42,14 @@ Establece el tiempo de concesión por defecto de la dirección IP asignada. El v
 max-lease-time 7200;
 ```
 Establece el tiempo máximo permitido de concesión de una IP. El valor está en segundos, por lo que 7200 segundos = 2 horas. Aunque un cliente solicite mantener la IP por un tiempo mayor, el servidor no le concederá más de 2 horas.
+
+# Comentarios
+```
+# The ddns-update-style parameter controls whether or not the server will
+# attempt to do a DNS update when a lease is confirmed. We default to the
+# behavior of the version 2 packages ('none', since DHCP v2 didn't
+# have support for DDNS.)
+
+```
+Explica que el parámetro ddns-update-style controla si el servidor DHCP intentará o no actualizar automáticamente los registros del servidor DNS cuando se confirme la entrega (concesión) de una IP a un equipo. Añade que por defecto se utiliza el comportamiento clásico de la versión 2 del paquete ('none'/ninguno), dado que la versión 2 de DHCP no tenía soporte para DNS Dinámico (DDNS).
+
