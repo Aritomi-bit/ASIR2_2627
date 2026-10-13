@@ -19,42 +19,68 @@ Actualiza los repositorios de paquetes e instala BIND9 junto con sus herramienta
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install bind9 bind9utils bind9-doc -y
+
 ```
 
+* **Cómo verificar:** Ejecuta `named -v` para comprobar que la versión de BIND se muestra correctamente.
+
 ### Paso 2: Configurar los reenviadores (Forwarders)
+
 Para permitir que el servidor resuelva consultas de Internet (como dominios externos), edita el archivo de opciones:
-```
+
+```bash
 sudo nano /etc/bind/named.conf.options
+
 ```
-Descomenta y configura los servidores DNS externos en la sección forwarders:
-```
+
+Descomenta y configura los servidores DNS externos en la sección `forwarders`:
+
+```text
 forwarders {
     8.8.8.8;
     1.1.1.1;
 };
+
 ```
+
+* **Cómo verificar:** Ejecuta `named-checkconf` para validar que la sintaxis del archivo sea correcta sin errores.
+
 ### Paso 3: Reiniciar y habilitar el servicio
+
 Aplica los cambios reiniciando BIND9 y configurándolo para que inicie automáticamente:
-```
+
+```bash
 sudo systemctl restart bind9
 sudo systemctl enable bind9
+
 ```
+
+* **Cómo verificar:** Ejecuta `sudo systemctl status bind9` y asegúrate de que el estado indique `active (running)`.
+
 ### Paso 4: Configurar el Firewall (UFW)
+
 Abre el puerto 53 (TCP/UDP) en el cortafuegos para permitir las consultas DNS de los clientes:
-```
+
+```bash
 sudo ufw allow 53/tcp
 sudo ufw allow 53/udp
 sudo ufw reload
+
 ```
-  * Cómo verificar: Ejecuta sudo ufw status para confirmar que el puerto 53 esté listado y permitido.
+
+* **Cómo verificar:** Ejecuta `sudo ufw status` para confirmar que el puerto 53 esté listado y permitido.
 
 ### Paso 5: Probar el funcionamiento del servidor
-Realiza una consulta utilizando la herramienta dig apuntando al servidor local:
-```
+
+Realiza una consulta utilizando la herramienta `dig` apuntando al servidor local:
+
+```bash
 dig @localhost google.com
+
 ```
-  * Cómo verificar: En la salida del comando, comprueba que aparezca ;;
-    SERVER: 127.0.0.1#53 y que la sección ANSWER SECTION devuelva las direcciones IP correspondientes.
+
+* **Cómo verificar:** En la salida del comando, comprueba que aparezca `;; SERVER: 127.0.0.1#53` y que la sección `ANSWER SECTION` devuelva las direcciones IP correspondientes.
+
 
 
 
